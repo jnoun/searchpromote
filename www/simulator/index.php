@@ -9,6 +9,16 @@ $aURLs = array
 			'stage' => 'http://stage.pc_world_dev.guided.lon5.atomz.com',
 			'live'  => 'http://pc_world_dev.guided.lon5.atomz.com'
 		),
+		'test01'	=> array
+		(
+			'stage' => 'http://stage.sp1004e23c.guided.lon5.atomz.com',
+			'live'  => 'http://sp1004e23c.guided.lon5.atomz.com'
+		),
+		'test02'	=> array
+		(
+			'stage' => 'http://stage.sp1004e23d.guided.lon5.atomz.com',
+			'live'  => 'http://sp1004e23d.guided.lon5.atomz.com'
+		),
 		'prod'	=> array
 		(
 			'stage' => 'http://stage.pc_world.guided.lon5.atomz.com',
@@ -19,8 +29,18 @@ $aURLs = array
 	(
 		'dev' 	=> array
 		(
-			'stage' => 'http://stage.currys.guided.lon5.atomz.com',
+			'stage' => 'http://stage.currys_dev.guided.lon5.atomz.com',
 			'live'  => 'http://currys_dev.guided.lon5.atomz.com'
+		),
+		'test01'	=> array
+		(
+			'stage' => 'http://stage.sp1004e23e.guided.lon5.atomz.com',
+			'live'  => 'http://sp1004e23e.guided.lon5.atomz.com'
+		),
+		'test02'	=> array
+		(
+			'stage' => 'http://stage.sp1004e23f.guided.lon5.atomz.com',
+			'live'  => 'http://sp1004e23f.guided.lon5.atomz.com'
 		),
 		'prod'	=> array
 		(
@@ -29,7 +49,6 @@ $aURLs = array
 		)
 	)
 );
-
 
 $sQueryString = '?i=1&sp_cs=UTF-8&do=json';
 
@@ -102,7 +121,7 @@ foreach($aURLs as $sSite => $aPlatforms)
 				$bSelected = false;
 			}
 
-			$sUrl = 'http://pulvaj01.sp_simulator.fo.dev.hml.dixonsretail.net/?site=' . $sSite . '&platform=' . $sPlatform . '&index=' . $sIndex;
+			$sUrl = $_SERVER['SCRIPT_URI'] . '?site=' . $sSite . '&platform=' . $sPlatform . '&index=' . $sIndex;
 			echo '<a href="' . $sUrl . '"' . (($bSelected === true) ? ' class="selected"' : ''). '>' . $sIndex .'</a>&nbsp;';
 		}
 		echo '</li>';
@@ -190,6 +209,9 @@ else
 $ch = curl_init();
 
 // Configuration de l'URL et d'autres options
+
+var_dump($sAdobeUrl);
+
 curl_setopt($ch, CURLOPT_URL, $sAdobeUrl);
 curl_setopt($ch, CURLOPT_HEADER, 0);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
